@@ -63,10 +63,11 @@ const Sidebar = () => {
         `}
       >
         <div className="flex items-center justify-between p-6 border-b">
-
+<Link to={"/"} >
           <h2 className="text-2xl font-bold">
             🌸 FlowerLamp
           </h2>
+</Link>
 
           <button
             onClick={() => setMobileOpen(false)}

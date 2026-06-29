@@ -1,7 +1,45 @@
 import { Mail, Lock, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { useState } from "react";
 
 const Login = () => {
+
+  const [email, setEmail] = useState("");
+
+const [password, setPassword] = useState("");
+
+const navigate = useNavigate();
+
+const handleLogin = async (e) => {
+
+    e.preventDefault();
+
+    try{
+
+        await signInWithEmailAndPassword(
+
+            auth,
+
+            email,
+
+            password
+
+        );
+
+        navigate("/admin");
+
+    }
+
+    catch(error){
+
+        alert(error.message);
+
+    }
+
+}
+
   return (
     <section className="min-h-screen bg-[#fafafa] flex items-center justify-center px-5 py-10">
 
@@ -23,12 +61,11 @@ const Login = () => {
 </Link>
 
         {/* Form */}
-
-        <form className="mt-10 space-y-6">
+<form onSubmit={handleLogin}>
 
           {/* Email */}
 
-          <div>
+          <div className="mt-5" >
 
             <label className="block mb-2 text-sm font-medium">
               Email Address
@@ -43,6 +80,9 @@ const Login = () => {
 
               <input
                 type="email"
+value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+
                 placeholder="Enter your email"
                 className="flex-1 ml-3 outline-none bg-transparent"
               />
@@ -68,6 +108,9 @@ const Login = () => {
 
               <input
                 type="password"
+                value={password}
+
+onChange={(e)=>setPassword(e.target.value)}
                 placeholder="Enter your password"
                 className="flex-1 ml-3 outline-none bg-transparent"
               />
@@ -78,31 +121,12 @@ const Login = () => {
 
           {/* Remember */}
 
-          <div className="flex items-center justify-between">
-
-            {/* <label className="flex items-center gap-2 text-sm cursor-pointer">
-
-              <input
-                type="checkbox"
-                className="w-4 h-4 accent-black"
-              />
-
-              Remember Me
-
-            </label> */}
-
-            {/* <button
-              type="button"
-              className="text-sm text-gray-500 hover:text-black transition"
-            >
-              Forgot?
-            </button> */}
-
-          </div>
+       
 
           {/* Button */}
 
           <button
+            type="submit"
             className="
             w-full
             h-14
@@ -114,8 +138,8 @@ const Login = () => {
             justify-center
             gap-2
             hover:bg-gray-800
-            transition"
-          >
+            transition mt-5"
+            >
 
             Login
 
