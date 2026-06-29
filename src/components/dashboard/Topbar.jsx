@@ -8,7 +8,7 @@ const Topbar = () => {
 
         {/* Left */}
 
-        <div className=" sm:ms-auto" >
+        <div className="   ms-auto" >
 
           <h1 className="text-2xl font-bold">
             Dashboard
