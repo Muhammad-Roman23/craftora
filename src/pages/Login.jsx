@@ -95,7 +95,7 @@ value={email}
 
           <div>
 
-            <label className="block mb-2 text-sm font-medium">
+            <label className="block mb-2 text-sm mt-4 font-medium">
               Password
             </label>
 
