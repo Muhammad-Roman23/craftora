@@ -8,13 +8,13 @@ const DashboardLayout = () => {
 
       <Sidebar />
 
-      <div className="flex-1 flex flex-col lg:ml-72">
+     <div className="flex-1 min-w-0 flex flex-col lg:ml-72">
 
         <Topbar />
 
-        <main className="flex-1 p-5 lg:p-8">
-          <Outlet />
-        </main>
+       <main className="flex-1 p-4 sm:p-5 lg:p-8 overflow-x-hidden">
+    <Outlet />
+</main>
 
       </div>
 

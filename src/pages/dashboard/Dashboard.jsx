@@ -30,27 +30,24 @@ const Dashboard = () => {
 
     <>
 
-      <div
-        className="
-        grid
-        gap-6
-        sm:grid-cols-2
-        xl:grid-cols-4"
-      >
-
-        {
-          cards.map((item,index)=>
-
-            <DashboardCard
-              key={index}
-              title={item.title}
-              value={item.value}
-            />
-
-          )
-        }
-
-      </div>
+    <div
+  className="
+    grid
+    grid-cols-1
+    sm:grid-cols-2
+    xl:grid-cols-4
+    gap-4
+    lg:gap-6
+  "
+>
+  {cards.map((item, index) => (
+    <DashboardCard
+      key={index}
+      title={item.title}
+      value={item.value}
+    />
+  ))}
+</div>
 
       {/* Recent Orders */}
 
