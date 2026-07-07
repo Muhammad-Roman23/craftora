@@ -3,6 +3,7 @@ import {
   Package,
   Boxes,
   ShoppingCart,
+  LayoutGrid,
   LogOut,
   ChevronDown,
   Menu,
@@ -18,6 +19,7 @@ const Sidebar = () => {
   const [productOpen, setProductOpen] = useState(false);
 
   const [materialOpen, setMaterialOpen] = useState(false);
+  const [categoryOpen, setCategoryOpen] = useState(false);
 
   return (
     <>
@@ -144,7 +146,7 @@ const Sidebar = () => {
 
               <Boxes size={20} />
 
-              Materials
+             Materials
 
             </div>
 
@@ -167,6 +169,46 @@ const Sidebar = () => {
 <Link to={"materials"} >
               <button className="text-left py-2 hover:text-black text-gray-500">
                 Material List
+              </button>
+</Link>
+
+            </div>
+          )}
+
+          {/*  categories */}
+
+          <button
+            onClick={() => setCategoryOpen(!categoryOpen)}
+            className="w-full flex justify-between items-center px-4 py-3 rounded-xl hover:bg-gray-100"
+          >
+
+            <div className="flex gap-3 items-center">
+
+              <LayoutGrid size={20} />
+
+             Categories
+
+            </div>
+
+            <ChevronDown
+              className={`duration-300 ${
+                categoryOpen ? "rotate-180" : ""
+              }`}
+            />
+
+          </button>
+
+          {categoryOpen && (
+            <div className="ml-10 flex flex-col gap-2">
+<Link to={"category/add"} >
+              <button className="text-left py-2 hover:text-black text-gray-500">
+                Add Category
+              </button>
+</Link>
+
+<Link to={"categories"} >
+              <button className="text-left py-2 hover:text-black text-gray-500">
+                Category List
               </button>
 </Link>
 

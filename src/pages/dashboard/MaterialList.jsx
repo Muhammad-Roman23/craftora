@@ -8,17 +8,23 @@ const materials = [
   {
     id: 1,
     name: "Wood",
-    description: "Premium Wooden Material",
+    stock: 120,
+    unitPrice: 150,
+      purchaseDate: "07 Jul 2026",
   },
   {
     id: 2,
-    name: "Glass",
-    description: "Crystal Glass",
+    name: "Glue",
+    stock: 35,
+    unitPrice: 80,
+      purchaseDate: "07 Jul 2026",
   },
   {
     id: 3,
-    name: "Metal",
-    description: "Steel Material",
+    name: "Artificial Flower",
+    stock: 200,
+    unitPrice: 45,
+      purchaseDate: "07 Jul 2026",
   },
 ];
 
@@ -59,70 +65,115 @@ const MaterialList = () => {
 
       <div className="bg-white rounded-3xl border overflow-x-auto">
 
-        <table className="w-full min-w-[700px]">
+        <table className="w-full min-w-[700px] ">
 
-          <thead className="bg-gray-50">
+     <thead className="bg-gray-50">
 
-            <tr>
+<tr>
 
-              <th className="text-left px-6 py-4">
-                Name
-              </th>
+<th className="text-left px-6 py-4">
+Material
+</th>
 
-              <th className="text-left">
-                Description
-              </th>
+<th className="px-4">
 
-              <th className="text-center">
-                Action
-              </th>
+    Available Stock
 
-            </tr>
+</th>
 
-          </thead>
+<th className="text-center px-4">
+Unit Price
+</th>
 
-          <tbody>
+<th className="text-center px-4">
+Inventory Value
+</th>
 
-            {materials.map((item) => (
+<th className="text-center px-4">
+  Purchase Date
+</th>
 
-              <tr
-                key={item.id}
-                className="border-t hover:bg-gray-50"
-              >
+<th className="text-center px-4">
+Action
+</th>
 
-                <td className="px-6 py-5 font-semibold">
-                  {item.name}
-                </td>
+</tr>
 
-                <td>
-                  {item.description}
-                </td>
+</thead>
+<tbody>
 
-                <td>
+{materials.map((item) => (
 
-                  <div className="flex justify-center gap-3">
+<tr
+key={item.id}
+className="border-t hover:bg-gray-50"
+>
 
-                    <button className="w-10 h-10 rounded-lg border flex items-center justify-center hover:bg-black hover:text-white">
+<td className="px-6 py-5 font-semibold">
+{item.name}
+</td>
 
-                      <Pencil size={18} />
 
-                    </button>
 
-                    <button className="w-10 h-10 rounded-lg border flex items-center justify-center hover:bg-red-500 hover:text-white">
+<td className="px-6 py-5">
+  <div className="text-center">
+    <span
+      className={`px-3 py-1 rounded-full text-sm font-semibold
+        ${
+          item.stock < 10
+            ? "bg-red-100 text-red-600"
+            : item.stock > 40
+            ? "bg-green-100 text-green-700"
+            : "bg-yellow-100 text-yellow-700"
+        }`}
+    >
+      {item.stock}
+    </span>
+  </div>
+</td>
 
-                      <Trash2 size={18} />
 
-                    </button>
 
-                  </div>
+<td className="text-center font-medium">
 
-                </td>
+Rs. {item.unitPrice}
 
-              </tr>
+</td>
 
-            ))}
+<td className="text-center font-semibold text-green-600">
 
-          </tbody>
+Rs. {(item.stock * item.unitPrice).toLocaleString()}
+
+</td>
+<td className="text-center">
+  {item.purchaseDate}
+</td>
+
+<td>
+
+<div className="flex justify-center gap-3">
+
+<button className="w-10 h-10 rounded-lg border flex items-center justify-center hover:bg-black hover:text-white transition">
+
+<Pencil size={18} />
+
+</button>
+
+<button className="w-10 h-10 rounded-lg border flex items-center justify-center hover:bg-red-500 hover:text-white transition">
+
+<Trash2 size={18} />
+
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+))}
+
+</tbody>
 
         </table>
 

@@ -8,6 +8,8 @@ import ProductList from "../pages/dashboard/ProductList"
 import MaterialList from "../pages/dashboard/MaterialList"
 import AddMaterial from "../pages/dashboard/AddMaterial"
 import Orders from "../pages/dashboard/Orders"
+import AddCategory from "../pages/dashboard/AddCategory"
+import CategoryList from "../pages/dashboard/CategoryList"
 
 
 
@@ -29,6 +31,8 @@ export const Router = () => {
   <Route path="products/add" element={<AddProduct />} />
   <Route path="materials" element={<MaterialList />} />
   <Route path="materials/add" element={<AddMaterial />} />
+  <Route path="categories" element={<CategoryList />} />
+  <Route path="category/add" element={<AddCategory />} />
   <Route path="orders" element={<Orders />} />
 </Route>
 
